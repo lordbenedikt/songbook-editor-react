@@ -64,15 +64,22 @@ Leaving all my [F]fears behind`
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw', }}>
-            <h3 style={{ margin: '10px' }}>ChordPro Editor</h3>
             <div style={{ display: "flex", flex: '1 1 0', padding: "10px", boxSizing: "border-box" }}>
-                <div style={{ flex: 1, marginRight: "10px" }}>
-                    <div ref={editorRef} style={{ border: "1px solid #ccc", height: "100%", overflow: "auto" }}></div>
+                
+                <div style={{ display: 'flex', flex: '1', flexDirection: 'column', marginRight: "10px" }}>
+                    <h3>Editor</h3>                
+                    <div style={{ flex: 1, marginRight: "10px" }}>
+                        <div ref={editorRef} style={{ border: "1px solid #ccc", height: "100%", overflow: "auto" }}></div>
+                    </div>
                 </div>
-                <div style={{ flex: 1, border: "1px solid #ccc", padding: "10px", overflowY: "auto", fontFamily: "sans-serif" }}>
+
+                <div style={{ display: 'flex', flex: '1', flexDirection: 'column', marginRight: "10px" }}>
                     <h3>Preview</h3>
-                    <ChordProPreview text={text} />
+                    <div style={{ flex: 1, border: "1px solid #ccc", padding: "10px", overflowY: "auto", fontFamily: "sans-serif" }}>
+                        <ChordProPreview text={text} />
+                    </div>
                 </div>
+                
             </div>
         </div>
     );
