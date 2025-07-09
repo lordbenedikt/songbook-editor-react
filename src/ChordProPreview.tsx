@@ -40,14 +40,23 @@ function parseChordPro(chordProText: string): ParsedLine[] {
         let match;
 
         while ((match = chordRegex.exec(trimmedLine)) !== null) {
+            // Add lyric before the chord if any
             if (match.index > lastIndex) {
                 segments.push({ lyric: trimmedLine.substring(lastIndex, match.index) });
             }
-            segments.push({ chord: match[1], lyric: "" });
             lastIndex = chordRegex.lastIndex;
+            // Look ahead to next chord or end
+            const nextMatch = chordRegex.exec(trimmedLine);
+            chordRegex.lastIndex = lastIndex; // reset regex state
+            const nextIndex = nextMatch ? nextMatch.index : trimmedLine.length;
+            const lyricAfterChord = trimmedLine.substring(lastIndex, nextIndex);
+            segments.push({ chord: match[1], lyric: lyricAfterChord });
+            lastIndex = nextIndex;
         }
-
-        if (lastIndex < trimmedLine.length) {
+        // If no chords, or trailing lyric after last chord
+        if (segments.length === 0) {
+            segments.push({ lyric: trimmedLine });
+        } else if (lastIndex < trimmedLine.length) {
             segments.push({ lyric: trimmedLine.substring(lastIndex) });
         }
 
@@ -74,7 +83,11 @@ const ChordProPreview: React.FC<{ text: string }> = ({ text }) => {
                         case 'artist':
                             return <h4 key={lineIndex}>{line.value}</h4>;
                         case 'comment':
-                            return <i key={lineIndex}>{line.value}</i>;
+                            return <div className="paragraph-badge" key={lineIndex}>
+                                <div className="center">
+                                    {line.value}
+                                </div>
+                            </div>;
                         default:
                             return <div key={lineIndex}>{line.value}</div>;
                     }

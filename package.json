@@ -15,6 +15,7 @@
   "dependencies": {
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.28.0",
+    "bootstrap": "^5.3.7",
     "codemirror": "^6.0.1",
     "gh-pages": "^6.3.0",
     "react": "^19.1.0",

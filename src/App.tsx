@@ -6,18 +6,26 @@ import ChordProPreview from "./ChordProPreview.tsx";
 
 const App: React.FC = () => {
     const [text, setText] = useState<string>(
-        `{title: Fly High}
-{artist: Example Band}
-{comment: Verse 1}
-[C]I hear the [G]sound of the wind
-[Am]Whispering [F]stories again
+        
+`{title: JAHWE}
+{artist: Ps.104; 2.Mo.3,13-14; Phil.2,10-11}
 
-[C]Walking this [G]old dusty road
-[Am]Wondering [F]where I should go
+{comment: V1}
+Jah[C]we, Er [D/F#]lebt für [Em]immer,
+[G/H]   Er herrscht mit Liebe und Kr[G]aft.  [Am7]
+Die W[C]elt muss s[D/F#]ich nun b[E]eugen,
+denn [Am]er ist erh[G/H]oben.[C   D]
 
-{comment: Chorus}
-[C]And I’ll [G]fly, high above the [Am]sky
-Leaving all my [F]fears behind`
+{comment: PC}
+Wir s[Em]eh'n auf Jah[C]e, Jah[G]we.  [D/F#]
+Für [Em]immer Jah[C]we, Jah[D]e.
+
+{comment: V2}
+Denn [C]er ist [D/F#]unsre H[Em]offnung,
+[G/H]  Er li[C]ebt, wie keiner es t[G]ut.  [Am7]
+Erh[C]ebt den [D/F#]Gott des [Em]Himmels,
+[Am7]gebt Ihm die [G/H]Ehre.    [C]        [D]`
+        
     );
 
     const editorRef = useRef<HTMLDivElement | null>(null);
@@ -65,7 +73,6 @@ Leaving all my [F]fears behind`
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw', }}>
             <div style={{ display: "flex", flex: '1 1 0', padding: "10px", boxSizing: "border-box" }}>
-                
                 <div style={{ display: 'flex', flex: '1', flexDirection: 'column', marginRight: "10px" }}>
                     <h3>Editor</h3>                
                     <div style={{ flex: 1, marginRight: "10px" }}>
@@ -73,7 +80,7 @@ Leaving all my [F]fears behind`
                     </div>
                 </div>
 
-                <div style={{ display: 'flex', flex: '1', flexDirection: 'column', marginRight: "10px" }}>
+                <div className="preview-container" style={{ display: 'flex', flex: '1', flexDirection: 'column', marginRight: "10px" }}>
                     <h3>Preview</h3>
                     <div style={{ flex: 1, border: "1px solid #ccc", padding: "10px", overflowY: "auto", fontFamily: "sans-serif" }}>
                         <ChordProPreview text={text} />

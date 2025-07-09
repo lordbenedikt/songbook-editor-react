@@ -13,8 +13,35 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
-  --chord-color: orange;
-  --chord-font-size: 1.2em;
+  --bg-color: white;
+  --primary-color: #142f77;
+  --secondary-color: #ff004d;
+  
+  --chord-font-size: 1em;
+  --chord-font-wheight: 800;
+}
+
+.preview-container {
+  
+}
+
+.paragraph-badge {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: bold;
+  border-radius: 50%;
+  color: var(--bg-color);
+  background-color: var(--secondary-color);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 a {
@@ -35,20 +62,29 @@ body {
 }
 
 h1 {
+  color: var(--primary-color);
   font-size: 3.2em;
   line-height: 1.1;
 }
 
 h2 {
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary-color);
   margin: 0;
 }
 
 h3 {
+  text-align: center;
   margin: 10px;
 }
 
 h4 {
-  margin-block: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+  margin-block: 10px;
 }
 
 button {

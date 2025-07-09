@@ -7,10 +7,10 @@ interface LyricsSegmentProps {
 
 const LyricsSegment: React.FC<LyricsSegmentProps> = ({ chord, lyric }) => {
     return (
-        <div style={{ display: 'inline-block' }}>
+        <div className={ chord + ":" + lyric} style={{ display: 'inline-block' }}>
             <div style={{ fontSize: 'var(--chord-font-size)', position: 'relative' }}>
                 {chord && (
-                    <span style={{ position: 'absolute', top: '0', color: 'var(--chord-color)', fontWeight: 'bold', fontFamily: 'monospace' }}>
+                    <span style={{ position: 'absolute', top: '0', color: 'var(--secondary-color)', fontWeight: '1000', fontFamily: 'monospace' }}>
                         {chord}
                     </span>
                 )}
