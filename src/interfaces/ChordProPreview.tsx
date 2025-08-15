@@ -69,10 +69,10 @@ function parseChordPro(chordProText: string): ParsedLine[] {
 
 const ChordProPreview: React.FC<{ text: string }> = ({ text }) => {
     const parsedContent = parseChordPro(text);
-    const songNumber = 122;
+    const songNumber = 128;
 
     return (
-        <div className="songbook-page">
+        <div id="page-preview" className="songbook-page">
             <div className="songbook-page-frame">
                 <div className="song-number-badge">
                     <div className="center">
@@ -86,7 +86,7 @@ const ChordProPreview: React.FC<{ text: string }> = ({ text }) => {
                     if (line.type === 'directive') {
                         switch (line.key) {
                             case 'title':
-                                return <h2 key={lineIndex}>{line.value}</h2>;
+                                return <h2 id="song-title" key={lineIndex}>{line.value}</h2>;
                             case 'artist':
                                 return <h4 key={lineIndex}>{line.value}</h4>;
                             case 'comment':

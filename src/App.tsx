@@ -2,12 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { EditorView } from "@codemirror/view";
 import { EditorState, type Extension } from "@codemirror/state";
 import { basicSetup } from "codemirror";
+import './App.css'
 import ChordProPreview from "./interfaces/ChordProPreview.tsx";
+import { downloadPdfFromHtml } from './api/pdf.tsx';
+import cssContent from './style.css?raw';
+import bootstrapCss from 'bootstrap/dist/css/bootstrap.min.css?raw';
 
 const App: React.FC = () => {
     const [text, setText] = useState<string>(
         
-`{title: TITLE}
+`{title: JAHWE}
 {artist: Ps.104; 2.Mo.3,13-14; Phil.2,10-11}
 
 {comment: V1}
@@ -32,12 +36,36 @@ Erh[C]ebt den [D/F#]Gott des [Em]Himmels,
 [Am7]Er re[Em]giert, für[C] immer und[D] ewig.
 Denn [G]Er regiert für immer,
 [D]Er regiert für immer,
-[Am7]Er reg[Em]iert, f+r[C] immer und[D] ewig, Jah[G]we.
+[Am7]Er reg[Em]iert, für[C] immer und[D] ewig, Jah[G]we.
 {part: PC}
 {part: C}
 {footnote: Originaltitel Yahweh | T&M Reuben Morgan | Dt. Text Melina Lörracher | © 2009 Hillsong Music Publishing | Für D, A, CH: CopyCare Deutschland, 71087 Holzgerlingen}`
         
     );
+
+    const downloadPreviewAsPdf = () => {
+        const page = document.getElementById('page-preview')?.innerHTML || '';
+        const title = document.getElementById('song-title')?.innerHTML || 'unnamed';
+        const html = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Dynamic PDF</title>
+              <style>
+                ${bootstrapCss}
+                ${cssContent}
+              </style>
+            </head>
+            <body>
+                <div style="display: flex; flex-direction: column; width: 100%">
+                    ${page}
+                </div>
+            </body>
+            </html>
+        `;
+        downloadPdfFromHtml(html, `${title}.pdf`);
+    };
 
     const editorRef = useRef<HTMLDivElement | null>(null);
     const viewRef = useRef<EditorView | null>(null);
@@ -81,19 +109,29 @@ Denn [G]Er regiert für immer,
         }
     }, [text]);
 
+    
+    
+    // const printToPdf = () => {
+    //     exportElementToPDF(document.getElementById("page-preview"),1,"example.pdf");
+    // };
+
     return (
-        <div style={{ display: "flex", flexDirection: "row", height: "100vh", maxWidth: "100vw", padding: "10px", boxSizing: "border-box" }}>
-            <div style={{ display: 'flex', flex: '1 1 0', flexDirection: 'column', marginRight: "10px", maxWidth: "53%" }}>
-                <h3>Editor</h3>                
-                <div style={{ flex: 1, marginRight: "10px" }}>
-                    <div ref={editorRef} style={{ border: "1px solid #ccc", height: "100%", overflow: "auto" }}></div>
+        <div style={{ display: "flex", flexDirection: "row", height: "100%", width: "100vw", padding: "1vh", boxSizing: "border-box", }}>
+            
+            <div style={{ display: 'flex', flex: '1 1 0', flexDirection: 'column', marginRight: "10px", minWidth: 0, minHeight: 0, }}>
+                <h3>Editor</h3>              
+                <div className="scrollable border-gray" style={{ flex: "1 1 0", marginRight: "10px", }}>
+                    <div ref={editorRef}></div>
                 </div>
+                <button className="btn btn-primary" onClick={downloadPreviewAsPdf}>Print to PDF</button>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', marginRight: "10px" }}>
+            <div style={{ display: 'flex', flexDirection: 'column', marginRight: "10px", width: "65vh", }}>
                 <h3>Preview</h3>
-                <div className="preview-container" style={{ flex: 1, border: "1px solid #ccc", overflowY: "auto", fontFamily: "sans-serif" }}>
-                    <ChordProPreview text={text} />
+                <div id="page-preview" className="preview-container-wrapper h-100 w-100">
+                    <div className="preview-container border-gray" style={{ fontSize: '1.8vh', }}>
+                        <ChordProPreview text={text} />
+                    </div>
                 </div>
             </div>
             

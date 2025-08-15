@@ -17,15 +17,20 @@
   --primary-color: #142f77;
   --secondary-color: #ff004d;
   
-  --base-size: 1.25vw;
+  --base-size: 0.02; /* 1em for the page will be set to (page.height * --base-size) */
   --chord-font-size: 1em;
   --chord-font-wheight: 800;
+}
+
+.preview-container-wrapper {
+  flex: 1 1 0;
+  width: fit-content;
+  position: relative;
 }
 
 .preview-container {
   height: 100%;
   aspect-ratio: 0.7071 / 1;
-  font-size: var(--base-size);
 }
 
 .song-number-badge {
@@ -52,14 +57,17 @@
   width: 100%;
   height: 100%;
   transform: scale(1);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: hidden;
 }
 
 .songbook-page-frame {
   position: relative;
-  border: 0.15em solid var(--primary-color);
+  border: 0.2em solid var(--primary-color);
   padding-block: 2%;
   padding-inline: 30%;
-  min-height: 100%;
+  height: 100%;
   width: 100%;
   > * {
 
@@ -141,8 +149,9 @@ h2 {
 
 h3 {
   text-align: center;
+  font-size: 4vh;
   margin-top: 0;
-  margin-bottom: 0.4em;
+  margin-bottom: 2vh;
 }
 
 h4 {
@@ -150,6 +159,14 @@ h4 {
   text-align: center;
   font-size: 0.8em;
   color: var(--secondary-color);
+}
+
+.scrollable {
+  overflow-x: auto;
+}
+
+.border-gray {
+  border: 0.1em solid #ccc;
 }
 
 button {
