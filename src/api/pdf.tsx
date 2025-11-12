@@ -1,6 +1,7 @@
 export async function downloadPdfFromHtml(html: string, fileName = 'document.pdf') {
     try {
-        const response = await fetch('http://localhost:3001/generate-pdf', {
+        // let pdfServerUrl = import.meta.env.VITE_PDF_PRINTER_URL || 'http://localhost:3001';
+        const response = await fetch(`https://songbook-editor-react.onrender.com/generate-pdf`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

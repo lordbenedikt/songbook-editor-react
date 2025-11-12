@@ -36,7 +36,7 @@ app.post("/generate-pdf", async (req, res) => {
         res.send(pdfBuffer);
     } catch (err) {
         console.error(err);
-        res.status(500).send("Failed to generate PDF");
+        res.status(500).send(`Failed to generate PDF:\n${err}`);
     }
 });
 
