@@ -1,9 +1,11 @@
 {
   "name": "pdf-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "main": "pdf-server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm install && npx puppeteer browsers install chrome && tsc -p .",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,8 @@
     "puppeteer": "^24.16.2"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.19"
+    "@types/cors": "^2.8.19",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.2.2"
   }
 }
