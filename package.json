@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "pdf-server": "npm run --prefix ./src/pdf-server run"
+    "pdf-server:build": "npm run --prefix ./src/pdf-server build",
+    "pdf-server:start": "npm run --prefix ./src/pdf-server start"
   },
   "dependencies": {
     "@codemirror/state": "^6.4.1",
