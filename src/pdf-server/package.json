@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "npx puppeteer browsers install chrome",
     "build": "tsc",
-    "start": "node src/server.js"
+    "start": "npx puppeteer browsers install chrome && node src/server.js"
   },
   "keywords": [],
   "author": "",
