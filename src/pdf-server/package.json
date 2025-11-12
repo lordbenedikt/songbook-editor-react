@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "pdf-server.js",
   "scripts": {
-    "build": "npm install && npx puppeteer browsers install chrome && tsc -b",
+    "postinstall": "cross-env PUPPETEER_CACHE_DIR=.puppeteer-cache npx puppeteer install chrome",
+    "build": "tsc",
     "start": "node src/server.js"
   },
   "keywords": [],
@@ -18,8 +19,9 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
-    "@types/node": "^20.0.0",
     "@types/express": "^5.0.5",
+    "@types/node": "^20.0.0",
+    "cross-env": "^7.0.3",
     "typescript": "^5.2.2"
   }
 }

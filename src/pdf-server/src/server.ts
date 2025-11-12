@@ -13,7 +13,11 @@ app.post("/generate-pdf", async (req, res) => {
     try {
         const browser = await puppeteer.launch({
             headless: true,
-            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+            args: [
+                "--no-sandbox",             // required on Linux (Render)
+                "--disable-setuid-sandbox", // required on Linux
+                "--disable-dev-shm-usage",  // optional but safer on containers
+            ],
         });
         const page = await browser.newPage();
 
