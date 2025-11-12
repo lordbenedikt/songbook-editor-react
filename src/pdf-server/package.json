@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "pdf-server.js",
   "scripts": {
-    "postinstall": "npx puppeteer browsers install chrome",
     "build": "tsc",
     "start": "npx puppeteer browsers install chrome && node src/server.js"
   },

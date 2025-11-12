@@ -31,7 +31,7 @@ app.post("/generate-pdf", async (req, res) => {
         const pdfBuffer = await page.pdf({
             format: "A4",
             printBackground: true,
-            scale: 1.1,
+            scale: 1,
         });
 
         await browser.close();
