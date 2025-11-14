@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "concurrently \"npm run pdf-server:start\" \"vite\"",
     "ui-only": "vite",
+    "serve": "concurrently \"npm run pdf-server:start\" \"serve -s dist\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
