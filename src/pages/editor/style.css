@@ -17,7 +17,6 @@
   --primary-color: #142f77;
   --secondary-color: #ff004d;
   
-  --base-size: 0.02; /* 1em for the page will be set to (page.height * --base-size) */
   --chord-font-size: 1em;
   --chord-font-wheight: 800;
 }

@@ -17,7 +17,7 @@ app.post("/generate-pdf", async (req, res) => {
                 "--no-sandbox",             // required on Linux (Render)
                 "--disable-setuid-sandbox", // required on Linux
                 "--disable-dev-shm-usage",  // optional but safer on containers
-            ],
+    ],
             executablePath: puppeteer.executablePath(),
         });
         const page = await browser.newPage();
