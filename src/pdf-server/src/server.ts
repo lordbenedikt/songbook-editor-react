@@ -31,7 +31,7 @@ app.post("/generate-pdf", async (req, res) => {
         const pdfBuffer = await page.pdf({
             format: "A4",
             printBackground: true,
-            scale: 1,
+            scale: 1
         });
 
         await browser.close();
@@ -45,6 +45,6 @@ app.post("/generate-pdf", async (req, res) => {
     }
 });
 
-app.listen(3001, () => {
-    console.log("PDF server running on http://localhost:3001");
+app.listen(3001, '0.0.0.0', () => {
+    console.log("PDF server running on http://0.0.0.0:3001");
 });

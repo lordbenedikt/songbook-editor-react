@@ -72,7 +72,7 @@ const ChordProPreview: React.FC<{ text: string }> = ({ text }) => {
     const songNumber = 128;
 
     return (
-        <div id="page-preview" className="songbook-page">
+        <div className="songbook-page">
             <div className="songbook-page-frame">
                 <div className="song-number-badge">
                     <div className="center">

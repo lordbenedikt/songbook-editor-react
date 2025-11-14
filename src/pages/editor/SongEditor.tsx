@@ -27,8 +27,9 @@ const SongEditor: React.FC = () => {
     });
     
     const downloadPreviewAsPdf = () => {
-        const page = document.getElementById('page-preview')?.innerHTML || '';
-        const title = document.getElementById('song-title')?.innerHTML || 'unnamed';
+        const previewDoc = previewIframeRef.current?.contentDocument!;
+        const page = previewDoc.getElementById('page-preview')?.innerHTML || '';
+        const title = previewDoc.getElementById('song-title')?.innerHTML || 'unnamed';
         const html = `
             <!DOCTYPE html>
             <html lang="en">
@@ -147,7 +148,7 @@ const SongEditor: React.FC = () => {
                     <div ref={editorRef}></div>
                 </div>
                 <button className="btn btn-primary mt-2 me-2" onClick={downloadPreviewAsPdf}>Print to PDF</button>
-                <button className="btn btn-warning" onClick={() => alert(previewIframeRef.current?.contentDocument?.documentElement.outerHTML)}>Alert</button>
+                <button className="btn btn-warning mt-2 me-2" onClick={() => alert(previewIframeRef.current?.contentDocument?.documentElement.outerHTML)}>Alert</button>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', marginRight: "10px", width: "65vh", }}>
                 <h3>Preview</h3>

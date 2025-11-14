@@ -27,7 +27,7 @@ const PrintPreview: React.FC = () => {
     }, []);
     
     return (
-        <div id="page-preview flex-fill" className="preview-container-wrapper h-100 w-100">
+        <div id="page-preview" className="preview-container-wrapper h-100 w-100">
             <div className="preview-container">
                 <ChordProPreview text={songSource}/>
             </div>
