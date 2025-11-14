@@ -69,7 +69,7 @@ function parseChordPro(chordProText: string): ParsedLine[] {
 
 const ChordProPreview: React.FC<{ text: string }> = ({ text }) => {
     const parsedContent = parseChordPro(text);
-    const songNumber = 128;
+    const songNumber = 47;
 
     return (
         <div className="songbook-page">

@@ -40,6 +40,7 @@ const SongEditor: React.FC = () => {
                 ${bootstrapCss}
                 ${cssContent}
               </style>
+              <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
             </head>
             <body onload="setPreviewContainerFontSize()" onresize="setPreviewContainerFontSize()" style="width:800px;">
                 <script defer>
@@ -56,22 +57,22 @@ const SongEditor: React.FC = () => {
             </body>
             </html>
         `;
-        downloadAsHtml(html);
+        // downloadAsHtml(html);
         downloadPdfFromHtml(html, `${title}.pdf`);
     };
 
-    const downloadAsHtml = (html: string) => {
-        let element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(html));
-        element.setAttribute('download', 'preview.html');
-
-        element.style.display = 'none';
-        document.body.appendChild(element);
-
-        element.click();
-
-        document.body.removeChild(element);
-    }
+    // const downloadAsHtml = (html: string) => {
+    //     let element = document.createElement('a');
+    //     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(html));
+    //     element.setAttribute('download', 'preview.html');
+    //
+    //     element.style.display = 'none';
+    //     document.body.appendChild(element);
+    //
+    //     element.click();
+    //
+    //     document.body.removeChild(element);
+    // }
 
     const editorRef = useRef<HTMLDivElement | null>(null);
     const viewRef = useRef<EditorView | null>(null);
@@ -148,7 +149,6 @@ const SongEditor: React.FC = () => {
                     <div ref={editorRef}></div>
                 </div>
                 <button className="btn btn-primary mt-2 me-2" onClick={downloadPreviewAsPdf}>Print to PDF</button>
-                <button className="btn btn-warning mt-2 me-2" onClick={() => alert(previewIframeRef.current?.contentDocument?.documentElement.outerHTML)}>Alert</button>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', marginRight: "10px", width: "65vh", }}>
                 <h3>Preview</h3>
