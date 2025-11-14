@@ -6,6 +6,7 @@
   "homepage": "https://lordbenedikt.github.io/songbook-editor-react",
   "scripts": {
     "dev": "concurrently \"npm run pdf-server:start\" \"vite\"",
+    "ui-only": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

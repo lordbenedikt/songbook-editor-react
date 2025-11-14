@@ -1,6 +1,7 @@
 export async function downloadPdfFromHtml(html: string, fileName = 'document.pdf') {
     try {
-        let pdfServerUrl = import.meta.env.VITE_PDF_PRINTER_URL || 'http://localhost:3001';
+        // let pdfServerUrl = import.meta.env.VITE_PDF_PRINTER_URL || 'http://localhost:3001';
+        let pdfServerUrl = "http://217.154.71.76:3001";
         const response = await fetch(`${pdfServerUrl}/generate-pdf`, {
             method: 'POST',
             headers: {
